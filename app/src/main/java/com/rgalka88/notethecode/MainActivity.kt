@@ -1,10 +1,10 @@
 package com.rgalka88.notethecode
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.mvrx.BaseMvRxActivity
 import dagger.android.AndroidInjection
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseMvRxActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
