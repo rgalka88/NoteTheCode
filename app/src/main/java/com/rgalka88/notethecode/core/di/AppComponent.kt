@@ -11,6 +11,8 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
+        AppAssistedModule::class,
+        SharedPrefsModule::class,
         BuildersModule::class
     ]
 )

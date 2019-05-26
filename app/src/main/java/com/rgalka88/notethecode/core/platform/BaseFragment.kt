@@ -17,7 +17,5 @@ abstract class BaseFragment : BaseMvRxFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(layoutId(), container, false)
 
-    override fun invalidate() {}
-
     abstract fun layoutId(): Int
 }
