@@ -39,6 +39,7 @@ dependencies {
     kapt applicationDependencies.daggerAndroidCompiler
     kapt applicationDependencies.assistedInjectCompiler
     kapt applicationDependencies.epoxyCompiler
+    kapt applicationDependencies.glideCompiler
     compileOnly applicationDependencies.assistedInject
     compileOnly applicationDependencies.javaxAnnotation
     compileOnly applicationDependencies.javaxInject
