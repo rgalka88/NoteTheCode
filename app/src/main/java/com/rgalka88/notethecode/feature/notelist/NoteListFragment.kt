@@ -15,7 +15,7 @@ class NoteListFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (requireActivity() as? MainActivity)?.supportActionBar?.title ="NOTES"
+        (requireActivity() as? MainActivity)?.supportActionBar?.title = "NOTES"
     }
 
     override fun invalidate() = withState(viewModel) { state ->

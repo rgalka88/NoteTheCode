@@ -13,10 +13,11 @@ import javax.inject.Inject
 class CloudRepository @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) {
-    fun loadCloudStatus(): Observable<Boolean> = sharedPreferences.observe(CLOUD_SYNC_ENABLED, false)
+    fun loadCloudStatus(): Observable<Boolean> =
+        sharedPreferences.observe(CLOUD_SYNC_ENABLED, false)
 
     fun toggleCloudSyncState(): Completable = Completable.fromAction {
         val currentState = sharedPreferences[CLOUD_SYNC_ENABLED, false]
-        sharedPreferences[CLOUD_SYNC_ENABLED] = !currentState
+        sharedPreferences[CLOUD_SYNC_ENABLED] = currentState.not()
     }
 }

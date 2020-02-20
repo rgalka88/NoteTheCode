@@ -3,8 +3,9 @@ package com.rgalka88.notethecode.feature.drawer
 import com.airbnb.mvrx.Async
 import com.airbnb.mvrx.MvRxState
 import com.airbnb.mvrx.Uninitialized
+import com.rgalka88.notethecode.models.DrawerRowGroupModel
 
 data class DrawerState(
-    val hashTagsList: Async<List<String>> = Uninitialized,
+    val rowGroupList: Async<List<DrawerRowGroupModel>> = Uninitialized,
     val cloudSyncStatus: Async<Boolean> = Uninitialized
 ) : MvRxState

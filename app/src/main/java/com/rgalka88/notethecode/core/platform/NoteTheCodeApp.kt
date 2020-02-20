@@ -1,35 +1,22 @@
 package com.rgalka88.notethecode.core.platform
 
-import android.app.Activity
 import android.app.Application
-import android.app.Service
-import androidx.fragment.app.Fragment
 import com.rgalka88.notethecode.core.di.DaggerAppComponent
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import dagger.android.HasServiceInjector
-import dagger.android.support.HasSupportFragmentInjector
+import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
-class NoteTheCodeApp : Application(), HasActivityInjector, HasSupportFragmentInjector, HasServiceInjector {
+class NoteTheCodeApp : Application(), HasAndroidInjector {
 
     @Inject
-    lateinit var activityDaggerInjector: DispatchingAndroidInjector<Activity>
-
-    @Inject
-    lateinit var fragmentDaggerInjector: DispatchingAndroidInjector<Fragment>
-
-    @Inject
-    lateinit var serviceDaggerInjector: DispatchingAndroidInjector<Service>
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
         initComponent()
     }
 
-    override fun activityInjector() = activityDaggerInjector
-    override fun supportFragmentInjector() = fragmentDaggerInjector
-    override fun serviceInjector() = serviceDaggerInjector
+    override fun androidInjector() = dispatchingAndroidInjector
 
     private fun initComponent() {
         DaggerAppComponent.factory()
