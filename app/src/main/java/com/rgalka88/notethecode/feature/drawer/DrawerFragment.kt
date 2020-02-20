@@ -3,7 +3,6 @@ package com.rgalka88.notethecode.feature.drawer
 import android.os.Bundle
 import android.view.View
 import com.airbnb.mvrx.fragmentViewModel
-import com.airbnb.mvrx.withState
 import com.bumptech.glide.Glide
 import com.rgalka88.notethecode.R
 import com.rgalka88.notethecode.core.platform.BaseFragment
@@ -35,10 +34,6 @@ class DrawerFragment : BaseFragment(), AdapterCallbacks {
     }
 
     override fun layoutId(): Int = R.layout.fragment_drawer
-
-    override fun invalidate(): Unit = withState(viewModel) { state ->
-        state.cloudSyncStatus()?.let { renderCloudStatus(it) }
-    }
 
     override fun onArrowClick(drawerRowId: String) = viewModel.toggleRowExpand(drawerRowId)
 
