@@ -1,50 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:background="@color/greyDark"
-        android:layout_width="250dp"
-        android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="250dp"
+    android:layout_height="match_parent"
+    android:background="@color/greyDark">
 
     <TextView
-            android:id="@+id/appNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="@color/greyLight"
-            app:layout_constraintBottom_toTopOf="@+id/toolbarGuideline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/appNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/greyLight"
+        app:layout_constraintBottom_toTopOf="@+id/toolbarGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/toolbarGuideline"
-            app:layout_constraintGuide_begin="?attr/actionBarSize"
-            android:orientation="horizontal"/>
+        android:id="@+id/toolbarGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="?attr/actionBarSize" />
 
     <ImageView
-            android:id="@+id/cloudIcon"
-            android:layout_width="@dimen/icon_size_small"
-            android:layout_height="@dimen/icon_size_small"
-            android:layout_marginEnd="16dp"
-            android:tint="@color/drawerContent"
-            app:layout_constraintBottom_toTopOf="@+id/toolbarGuideline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription"
-            tools:srcCompat="@drawable/ic_cloud_off" />
+        android:id="@+id/cloudIcon"
+        android:layout_width="@dimen/icon_size_small"
+        android:layout_height="@dimen/icon_size_small"
+        android:layout_marginEnd="16dp"
+        android:tint="@color/drawerContent"
+        app:layout_constraintBottom_toTopOf="@+id/toolbarGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:srcCompat="@drawable/ic_cloud_off" />
 
     <com.airbnb.epoxy.EpoxyRecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbarGuideline"
-            tools:listitem="@layout/drawer_row" />
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbarGuideline"
+        tools:listitem="@layout/drawer_row" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
