@@ -71,6 +71,7 @@ class DrawerViewModel @AssistedInject constructor(
             DrawerRowGroupModel(
                 drawerRowModel = DrawerRowModel(
                     title = hashTagModel.title,
+                    hasChildren = hashTagModelsByParent[hashTagModel.title]?.isNotEmpty() ?: false,
                     childrenVisible = hashTagModel.expanded,
                     animateArrow = hashTagModel.animateArrow
                 ),

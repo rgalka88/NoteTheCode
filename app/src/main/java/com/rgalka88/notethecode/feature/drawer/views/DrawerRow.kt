@@ -3,6 +3,7 @@ package com.rgalka88.notethecode.feature.drawer.views
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.view.animation.RotateAnimation
 import android.view.animation.RotateAnimation.RELATIVE_TO_SELF
 import android.widget.FrameLayout
@@ -34,15 +35,19 @@ class DrawerRow @JvmOverloads constructor(
         ?.let { arrowIcon.setOnClickListener { it() } }
 
     @ModelProp
-    fun setRow(drawerRowModel: DrawerRowModel) {
-        Glide.with(context).load(drawerRowModel.drawableRes).into(rowIcon)
-        rowTitle.text = drawerRowModel.title
-        renderArrow(drawerRowModel.childrenVisible, drawerRowModel.animateArrow)
+    fun setRow(model: DrawerRowModel) {
+        Glide.with(context).load(model.drawableRes).into(rowIcon)
+        rowTitle.text = model.title
+        if (model.hasChildren) renderArrow(model.childrenVisible, model.animateArrow)
+        else arrowIcon.visibility = View.GONE
     }
 
-    private fun renderArrow(childrenVisible: Boolean, animateArrow: Boolean) = when (animateArrow) {
-        true -> renderArrowWithAnimation(childrenVisible)
-        false -> renderArrowWithoutAnimation(childrenVisible)
+    private fun renderArrow(childrenVisible: Boolean, animateArrow: Boolean) {
+        arrowIcon.visibility = View.VISIBLE
+        when (animateArrow) {
+            true -> renderArrowWithAnimation(childrenVisible)
+            false -> renderArrowWithoutAnimation(childrenVisible)
+        }
     }
 
     private fun renderArrowWithoutAnimation(childrenVisible: Boolean) = when (childrenVisible) {
