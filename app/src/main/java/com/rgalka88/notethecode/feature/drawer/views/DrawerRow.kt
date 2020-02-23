@@ -3,6 +3,8 @@ package com.rgalka88.notethecode.feature.drawer.views
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.animation.RotateAnimation
+import android.view.animation.RotateAnimation.RELATIVE_TO_SELF
 import android.widget.FrameLayout
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
@@ -34,7 +36,28 @@ class DrawerRow @JvmOverloads constructor(
     @ModelProp
     fun setRow(drawerRowModel: DrawerRowModel) {
         Glide.with(context).load(drawerRowModel.drawableRes).into(rowIcon)
-        Glide.with(context).load(R.drawable.ic_arrow).into(arrowIcon)
         rowTitle.text = drawerRowModel.title
+        renderArrow(drawerRowModel.childrenVisible, drawerRowModel.animateArrow)
     }
+
+    private fun renderArrow(childrenVisible: Boolean, animateArrow: Boolean) = when (animateArrow) {
+        true -> renderArrowWithAnimation(childrenVisible)
+        false -> renderArrowWithoutAnimation(childrenVisible)
+    }
+
+    private fun renderArrowWithoutAnimation(childrenVisible: Boolean) = when (childrenVisible) {
+        true -> arrowIcon.startAnimation(getRotateAnimation(90f, 90f, 0))
+        false -> arrowIcon.startAnimation(getRotateAnimation(0f, 0f, 0))
+    }
+
+    private fun renderArrowWithAnimation(childrenVisible: Boolean) = when (childrenVisible) {
+        true -> arrowIcon.startAnimation(getRotateAnimation(0f, 90f, 200))
+        false -> arrowIcon.startAnimation(getRotateAnimation(90f, 0f, 200))
+    }
+
+    private fun getRotateAnimation(from: Float, to: Float, animDuration: Long) =
+        RotateAnimation(from, to, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f).apply {
+            fillAfter = true
+            duration = animDuration
+        }
 }

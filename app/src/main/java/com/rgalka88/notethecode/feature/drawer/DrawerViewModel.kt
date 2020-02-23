@@ -22,8 +22,8 @@ class DrawerViewModel @AssistedInject constructor(
     @Assisted initialState: DrawerState,
     private val loadCloudSyncStatus: LoadCloudSyncStatus,
     private val loadHashTags: LoadHashTags,
-    private val toggleHashTag: ToggleHashTag,
-    private val toggleCloudSync: ToggleCloudSync
+    private val toggleCloudSync: ToggleCloudSync,
+    private val toggleHashTag: ToggleHashTag
 ) : BaseViewModel<DrawerState>(initialState) {
 
     init {
@@ -37,7 +37,8 @@ class DrawerViewModel @AssistedInject constructor(
     }
 
     fun toggleCloudSync() {
-        toggleCloudSync(None()).execute { this }
+        toggleCloudSync(None())
+            .execute { this }
     }
 
     fun toggleRowExpand(hashTagId: String) {
@@ -69,7 +70,9 @@ class DrawerViewModel @AssistedInject constructor(
         hashTagModelsByParent[parent]?.map { hashTagModel ->
             DrawerRowGroupModel(
                 drawerRowModel = DrawerRowModel(
-                    title = hashTagModel.title
+                    title = hashTagModel.title,
+                    childrenVisible = hashTagModel.expanded,
+                    animateArrow = hashTagModel.animateArrow
                 ),
                 drawerChildrenModel = DrawerChildrenModel(
                     createDrawerRowGroupModels(
