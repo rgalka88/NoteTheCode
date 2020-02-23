@@ -37,6 +37,8 @@ class DrawerFragment : BaseFragment(), AdapterCallbacks {
 
     override fun onArrowClick(drawerRowId: String) = viewModel.toggleRowExpand(drawerRowId)
 
+    override fun onRowClick(drawerRowId: String) = Unit
+
     private fun epoxyController() =
         simpleController(viewModel) { state ->
             state.rowGroupList()?.forEach { drawerRowGroupModel ->

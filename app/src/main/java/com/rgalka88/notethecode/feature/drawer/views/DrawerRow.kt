@@ -12,6 +12,8 @@ import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.bumptech.glide.Glide
 import com.rgalka88.notethecode.R
+import com.rgalka88.notethecode.core.utils.setGone
+import com.rgalka88.notethecode.core.utils.setVisible
 import com.rgalka88.notethecode.models.DrawerRowModel
 import kotlinx.android.synthetic.main.drawer_row.view.*
 
@@ -38,26 +40,33 @@ class DrawerRow @JvmOverloads constructor(
     fun setRow(model: DrawerRowModel) {
         Glide.with(context).load(model.drawableRes).into(rowIcon)
         rowTitle.text = model.title
-        if (model.hasChildren) renderArrow(model.childrenVisible, model.animateArrow)
-        else arrowIcon.visibility = View.GONE
+        arrowIcon.renderArrow(model)
     }
 
-    private fun renderArrow(childrenVisible: Boolean, animateArrow: Boolean) {
-        arrowIcon.visibility = View.VISIBLE
+    private fun View.renderArrow(model: DrawerRowModel) = when (model.hasChildren) {
+        true -> setVisible().renderArrowIcon(model.childrenVisible, model.animateArrow)
+        false -> setGone()
+    }
+
+    private fun View.renderArrowIcon(childrenVisible: Boolean, animateArrow: Boolean) = apply {
         when (animateArrow) {
-            true -> renderArrowWithAnimation(childrenVisible)
-            false -> renderArrowWithoutAnimation(childrenVisible)
+            true -> renderArrowIconWithAnimation(childrenVisible)
+            false -> renderArrowIconWithoutAnimation(childrenVisible)
         }
     }
 
-    private fun renderArrowWithoutAnimation(childrenVisible: Boolean) = when (childrenVisible) {
-        true -> arrowIcon.startAnimation(getRotateAnimation(90f, 90f, 0))
-        false -> arrowIcon.startAnimation(getRotateAnimation(0f, 0f, 0))
+    private fun View.renderArrowIconWithoutAnimation(childrenVisible: Boolean) = apply {
+        when (childrenVisible) {
+            true -> startAnimation(getRotateAnimation(90f, 90f, 0))
+            false -> startAnimation(getRotateAnimation(0f, 0f, 0))
+        }
     }
 
-    private fun renderArrowWithAnimation(childrenVisible: Boolean) = when (childrenVisible) {
-        true -> arrowIcon.startAnimation(getRotateAnimation(0f, 90f, 200))
-        false -> arrowIcon.startAnimation(getRotateAnimation(90f, 0f, 200))
+    private fun View.renderArrowIconWithAnimation(childrenVisible: Boolean) = apply {
+        when (childrenVisible) {
+            true -> startAnimation(getRotateAnimation(0f, 90f, 200))
+            false -> startAnimation(getRotateAnimation(90f, 0f, 200))
+        }
     }
 
     private fun getRotateAnimation(from: Float, to: Float, animDuration: Long) =

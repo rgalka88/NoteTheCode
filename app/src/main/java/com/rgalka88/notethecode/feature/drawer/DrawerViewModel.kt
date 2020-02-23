@@ -80,8 +80,7 @@ class DrawerViewModel @AssistedInject constructor(
                         hashTagModel.title,
                         hashTagModelsByParent.filterKeys { it != parent }
                     )
-                ),
-                childrenVisible = hashTagModel.expanded
+                )
             )
         } ?: emptyList()
 

@@ -2,6 +2,7 @@
 
 package com.rgalka88.notethecode.core.utils
 
+import android.view.View
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -26,3 +27,7 @@ fun <T> List<T>.addOrReplaceIfExist(value: T, block: (T) -> Boolean): List<T> =
 
 fun AppCompatActivity.findNavController(@IdRes viewId: Int): NavController =
     (supportFragmentManager.findFragmentById(viewId) as NavHostFragment).navController
+
+fun View.setVisible() = apply { visibility = View.VISIBLE }
+fun View.setGone() = apply { visibility = View.GONE }
+fun View.setInvisible() = apply { visibility = View.INVISIBLE }

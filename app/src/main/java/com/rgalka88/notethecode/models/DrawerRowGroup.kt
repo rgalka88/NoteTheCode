@@ -21,14 +21,13 @@ fun buildModels(drawerRowGroupModel: DrawerRowGroupModel, adapterCallbacks: Adap
         mutableListOf<EpoxyModel<*>>().apply {
             drawerRow {
                 id(drawerRowModel.title)
-                onRowClickListener { }
+                onRowClickListener { adapterCallbacks.onRowClick(drawerRowModel.title) }
                 onArrowClickListener { adapterCallbacks.onArrowClick(drawerRowModel.title) }
                 row(drawerRowModel)
             }
 
-            if (childrenVisible) {
-                childrenGroup(drawerChildrenModel, adapterCallbacks) {
-                }
+            if (drawerRowModel.childrenVisible) {
+                childrenGroup(drawerChildrenModel, adapterCallbacks)
             }
         }
     }
@@ -40,12 +39,10 @@ private fun MutableList<EpoxyModel<*>>.drawerRow(modelInitializer: DrawerRowMode
 
 private fun MutableList<EpoxyModel<*>>.childrenGroup(
     drawerChildrenModel: DrawerChildrenModel,
-    adapterCallbacks: AdapterCallbacks,
-    initializer: DrawerChildrenGroup.() -> Unit
+    adapterCallbacks: AdapterCallbacks
 ) {
     if (drawerChildrenModel.childList.isNotEmpty()) {
         DrawerChildrenGroup(drawerChildrenModel, adapterCallbacks)
-            .apply { initializer() }
             .addTo(this)
     }
 }
