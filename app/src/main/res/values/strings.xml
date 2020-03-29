@@ -2,4 +2,8 @@
     <string name="app_name">NoteTheCode</string>
     <string name="notes">Notes</string>
     <string name="trash">Trash</string>
+    <string name="untagged">Untagged</string>
+    <string name="todo">ToDo</string>
+    <string name="today">Today</string>
+    <string name="locked">Locked</string>
 </resources>

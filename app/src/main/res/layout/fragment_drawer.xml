@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="250dp"
     android:layout_height="match_parent"
-    android:background="@color/greyDark">
+    android:background="@color/contrastColor">
 
     <TextView
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textColor="@color/greyLight"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toTopOf="@+id/toolbarGuideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
         android:layout_width="@dimen/icon_size_small"
         android:layout_height="@dimen/icon_size_small"
         android:layout_marginEnd="16dp"
-        android:tint="@color/drawerContent"
+        android:tint="@color/iconColor"
         app:layout_constraintBottom_toTopOf="@+id/toolbarGuideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -47,14 +47,15 @@
         tools:listitem="@layout/drawer_row" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:clickable="true"
+        android:src="@drawable/ic_settings"
+        app:backgroundTint="@color/backgroundColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_settings" />
+        app:tint="@color/iconColor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

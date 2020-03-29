@@ -1,11 +1,11 @@
-package com.rgalka88.notethecode.data.hashtag
+package com.rgalka88.notethecode.data.draweritem
 
 import com.rgalka88.notethecode.R
 
-data class HashTagModel(
+data class DrawerItemModel(
     val title: String,
     val parent: String = "",
-    val iconResId: Int = R.drawable.ic_note,
+    val iconResId: Int = R.drawable.ic_hashtag,
     val expanded: Boolean = false,
     val animateArrow: Boolean = false
 )

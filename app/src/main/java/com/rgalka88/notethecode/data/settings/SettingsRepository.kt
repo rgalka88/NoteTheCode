@@ -1,4 +1,4 @@
-package com.rgalka88.notethecode.data.cloud
+package com.rgalka88.notethecode.data.settings
 
 import android.content.SharedPreferences
 import com.rgalka88.notethecode.core.platform.CLOUD_SYNC_ENABLED
@@ -10,7 +10,7 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 
-class CloudRepository @Inject constructor(
+class SettingsRepository @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) {
     fun loadCloudStatus(): Observable<Boolean> =

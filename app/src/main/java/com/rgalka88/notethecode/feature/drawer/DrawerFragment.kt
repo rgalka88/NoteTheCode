@@ -3,19 +3,14 @@ package com.rgalka88.notethecode.feature.drawer
 import android.os.Bundle
 import android.view.View
 import com.airbnb.mvrx.fragmentViewModel
-import com.bumptech.glide.Glide
 import com.rgalka88.notethecode.R
 import com.rgalka88.notethecode.core.platform.BaseFragment
 import com.rgalka88.notethecode.core.utils.drawerGroupRow
 import com.rgalka88.notethecode.core.utils.simpleController
 import com.rgalka88.notethecode.feature.drawer.views.AdapterCallbacks
 import kotlinx.android.synthetic.main.fragment_drawer.*
-import javax.inject.Inject
 
 class DrawerFragment : BaseFragment(), AdapterCallbacks {
-
-    @Inject
-    lateinit var drawerViewModelFactory: DrawerViewModel.Factory
 
     private val viewModel: DrawerViewModel by fragmentViewModel()
 
@@ -28,8 +23,8 @@ class DrawerFragment : BaseFragment(), AdapterCallbacks {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         cloudIcon.setOnClickListener { viewModel.toggleCloudSync() }
+        super.onViewCreated(view, savedInstanceState)
         recyclerView.setControllerAndBuildModels(epoxyController)
     }
 
@@ -42,9 +37,7 @@ class DrawerFragment : BaseFragment(), AdapterCallbacks {
     private fun epoxyController() =
         simpleController(viewModel) { state ->
             state.rowGroupList()?.forEach { drawerRowGroupModel ->
-                drawerGroupRow(drawerRowGroupModel, this@DrawerFragment) {
-                    id(drawerRowGroupModel.drawerRowModel.title)
-                }
+                drawerGroupRow(drawerRowGroupModel, this@DrawerFragment)
             }
         }
 
@@ -59,7 +52,7 @@ class DrawerFragment : BaseFragment(), AdapterCallbacks {
         }
 
     private fun renderCloudStatus(cloudStatus: Boolean) {
-        if (cloudStatus) Glide.with(requireContext()).load(R.drawable.ic_cloud_done).into(cloudIcon)
-        else Glide.with(requireContext()).load(R.drawable.ic_cloud_off).into(cloudIcon)
+        if (cloudStatus) cloudIcon.setImageResource(R.drawable.ic_cloud_done)
+        else cloudIcon.setImageResource(R.drawable.ic_cloud_off)
     }
 }

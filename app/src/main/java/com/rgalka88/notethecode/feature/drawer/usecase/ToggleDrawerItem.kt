@@ -5,13 +5,13 @@ import io.reactivex.Completable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class ToggleHashTag @Inject constructor(
-    private val setHashTagExpand: SetHashTagExpand,
+class ToggleDrawerItem @Inject constructor(
+    private val setDrawerItemExpand: SetDrawerItemExpand,
     private val setAnimationEnded: SetAnimationEnded
 ) : UseCase<Completable, String>() {
 
     override fun buildUseCase(params: String): Completable =
-        setHashTagExpand(params).toSingleDefault(params)
+        setDrawerItemExpand(params).toSingleDefault(params)
             .delay(200, TimeUnit.MILLISECONDS)
             .flatMapCompletable { setAnimationEnded(params) }
 }

@@ -9,6 +9,7 @@ import dagger.android.support.AndroidSupportInjection
 
 abstract class BaseFragment : BaseMvRxFragment() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -18,8 +19,7 @@ abstract class BaseFragment : BaseMvRxFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View =
-        inflater.inflate(layoutId(), container, false)
+    ): View = inflater.inflate(layoutId(), container, false)
 
     abstract fun layoutId(): Int
 

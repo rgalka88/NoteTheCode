@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorAccent">#323638</color>
-    <color name="background">#FAF9F9</color>
-    <color name="greyLight">#323638</color>
-    <color name="greyDark">#212628</color>
-    <color name="drawerContent">#C3C4C4</color>
-
+    <color name="accentColor">#009688</color>
+    <color name="backgroundColor">#263238</color>
+    <color name="contrastColor">#1E272C</color>
+    <color name="textColor">#607D8B</color>
+    <color name="iconColor">#607D8B</color>
 </resources>

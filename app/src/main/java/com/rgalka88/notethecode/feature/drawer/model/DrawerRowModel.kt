@@ -1,4 +1,4 @@
-package com.rgalka88.notethecode.models
+package com.rgalka88.notethecode.feature.drawer.model
 
 import androidx.annotation.DrawableRes
 import com.rgalka88.notethecode.R
@@ -6,7 +6,7 @@ import com.rgalka88.notethecode.R
 data class DrawerRowModel(
     @DrawableRes val drawableRes: Int = R.drawable.ic_hashtag,
     val title: String,
-    val hasChildren: Boolean,
-    val childrenVisible: Boolean,
-    val animateArrow: Boolean
+    val hasChildren: Boolean = false,
+    val childrenVisible: Boolean = false,
+    val animateArrow: Boolean = false
 )

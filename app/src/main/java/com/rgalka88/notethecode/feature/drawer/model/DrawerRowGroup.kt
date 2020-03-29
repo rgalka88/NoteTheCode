@@ -1,4 +1,4 @@
-package com.rgalka88.notethecode.models
+package com.rgalka88.notethecode.feature.drawer.model
 
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.EpoxyModelGroup

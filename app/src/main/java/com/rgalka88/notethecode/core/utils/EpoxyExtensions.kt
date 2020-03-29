@@ -7,8 +7,8 @@ import com.airbnb.mvrx.MvRxState
 import com.airbnb.mvrx.withState
 import com.rgalka88.notethecode.core.platform.BaseViewModel
 import com.rgalka88.notethecode.feature.drawer.views.AdapterCallbacks
-import com.rgalka88.notethecode.models.DrawerRowGroup
-import com.rgalka88.notethecode.models.DrawerRowGroupModel
+import com.rgalka88.notethecode.feature.drawer.model.DrawerRowGroup
+import com.rgalka88.notethecode.feature.drawer.model.DrawerRowGroupModel
 
 /**
  * Easily add models to an EpoxyRecyclerView, the same way you would in a buildModels method of EpoxyController.
@@ -18,7 +18,7 @@ import com.rgalka88.notethecode.models.DrawerRowGroupModel
 inline fun EpoxyController.drawerGroupRow(
     drawerRowGroupModel: DrawerRowGroupModel,
     adapterCallbacks: AdapterCallbacks,
-    modelInitializer: DrawerRowGroup.() -> Unit
+    modelInitializer: DrawerRowGroup.() -> Unit = {}
 ) {
     DrawerRowGroup(drawerRowGroupModel, adapterCallbacks).apply {
         modelInitializer()

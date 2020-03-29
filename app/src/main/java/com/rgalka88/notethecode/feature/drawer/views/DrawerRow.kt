@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide
 import com.rgalka88.notethecode.R
 import com.rgalka88.notethecode.core.utils.setGone
 import com.rgalka88.notethecode.core.utils.setVisible
-import com.rgalka88.notethecode.models.DrawerRowModel
+import com.rgalka88.notethecode.feature.drawer.model.DrawerRowModel
 import kotlinx.android.synthetic.main.drawer_row.view.*
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
@@ -38,7 +38,7 @@ class DrawerRow @JvmOverloads constructor(
 
     @ModelProp
     fun setRow(model: DrawerRowModel) {
-        Glide.with(context).load(model.drawableRes).into(rowIcon)
+        rowIcon.setImageResource(model.drawableRes)
         rowTitle.text = model.title
         arrowIcon.renderArrow(model)
     }

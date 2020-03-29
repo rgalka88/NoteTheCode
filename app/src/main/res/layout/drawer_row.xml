@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:background="@color/greyDark"
+    tools:background="@color/contrastColor"
+    android:animateLayoutChanges="true"
     tools:ignore="ContentDescription">
 
     <ImageView
@@ -14,7 +15,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:tint="@color/drawerContent"
+        android:tint="@color/iconColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,7 +32,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
-        android:textColor="@color/drawerContent"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/arrowIcon"
         app:layout_constraintStart_toEndOf="@+id/rowIcon"
@@ -46,7 +47,7 @@
         android:layout_marginEnd="16dp"
         android:src="@drawable/ic_arrow"
         android:layout_marginBottom="8dp"
-        android:tint="@color/drawerContent"
+        android:tint="@color/iconColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
