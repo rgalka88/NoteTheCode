@@ -1,96 +1,107 @@
 ext {
-  //Android libraries
-  appCompat_version = '1.1.0-alpha03'
-  coreKtx_version = '1.2.0'
-  material_version = '1.2.0-alpha05'
-  constraintLayout_version = '2.0.0-beta3'
-  archComponents_version = '2.2.0'
-  nav_version = '1.0.0'
+    //Android libraries
+    appCompat_version = '1.1.0-alpha03'
+    coreKtx_version = '1.2.0'
+    material_version = '1.2.0-alpha05'
+    constraintLayout_version = '2.0.0-beta3'
+    archComponents_version = '2.2.0'
+    nav_version = '1.0.0'
 
-  //Third party libraries
-  kotlin_coroutines_version = '0.22.1'
-  dagger_version = '2.26'
-  assisted_inject_version = '0.5.2'
-  javaxAnnotations_version = '1.0'
-  javaxInject_version = '1'
-  retrofit_version = '2.7.1'
-  okhttp_logging_interceptor_version = '4.4.0'
-  mvrx_verison = '1.3.0'
-  epoxy_version = '3.9.0'
-  glide_version = '4.11.0'
-  rxJava2_version = '2.2.8'
-  rxAndroid_version = '2.1.1'
-  rxKotlin_version = '2.3.0'
+    //Third party libraries
+    kotlin_coroutines_version = '0.22.1'
+    dagger_version = '2.26'
+    assisted_inject_version = '0.5.2'
+    javaxAnnotations_version = '1.0'
+    javaxInject_version = '1'
+    retrofit_version = '2.7.1'
+    okhttp_logging_interceptor_version = '4.4.0'
+    mvrx_verison = '1.3.0'
+    epoxy_version = '3.9.0'
+    glide_version = '4.11.0'
+    rxJava2_version = '2.2.8'
+    rxAndroid_version = '2.1.1'
+    rxKotlin_version = '2.3.0'
 
-  //Unit Testing
-  robolectric_version = '4.3.1'
-  junit_version = '4.13'
-  mockito_version = '1.4.0'
-  kluent_version = '1.14'
+    //Unit Testing
+    robolectric_version = '4.3.1'
+    junit_version = '4.13'
+    mockito_version = '1.4.0'
+    kluent_version = '1.14'
+    androidxTest_version = '1.2.1'
 
-  //Acceptance Testing
-  runner_version = '1.2.0'
-  espresso_version = '3.2.0'
+    //UI Testing
+    kaspresso_version = '1.1.0'
 
-  //Development
-  leakCanaryVersion = '1.5'
+    //Acceptance Testing
+    runner_version = '1.2.0'
+    espresso_version = '3.2.0'
 
-  mainApplication = [
-      kotlin:                     "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
-      kotlinCoroutines:           "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version",
-      kotlinCoroutinesAndroid:    "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version",
-      coreKtx:                    "androidx.core:core-ktx:$coreKtx_version",
-      appCompat:                  "androidx.appcompat:appcompat:$appCompat_version",
-      cardView:                   "androidx.cardview:cardview:$appCompat_version",
-      recyclerView:               "androidx.recyclerview:recyclerview:$appCompat_version",
-      constraintLayout:           "androidx.constraintlayout:constraintlayout:$constraintLayout_version",
-      androidAnnotations:         "androidx.annotation:annotation:$appCompat_version",
-      archComponents:             "androidx.lifecycle:lifecycle-extensions:$archComponents_version",
-      archComponentsCompiler:     "androidx.lifecycle:lifecycle-compiler:$archComponents_version",
-      navigationFragment:         "android.arch.navigation:navigation-fragment-ktx:$nav_version",
-      navigationUI:               "android.arch.navigation:navigation-ui-ktx:$nav_version",
-      material:                   "com.google.android.material:material:$material_version",
-      glide:                      "com.github.bumptech.glide:glide:$glide_version",
-      glideCompiler:              "com.github.bumptech.glide:compiler:$glide_version",
-      daggerCompiler:             "com.google.dagger:dagger-compiler:$dagger_version",
-      dagger:                     "com.google.dagger:dagger:$dagger_version",
-      daggerAndroid:              "com.google.dagger:dagger-android-support:$dagger_version",
-      daggerAndroidCompiler:      "com.google.dagger:dagger-android-processor:$dagger_version",
-      assistedInjectCompiler:     "com.squareup.inject:assisted-inject-processor-dagger2:$assisted_inject_version",
-      assistedInject:             "com.squareup.inject:assisted-inject-annotations-dagger2:$assisted_inject_version",
-      javaxAnnotation:            "javax.annotation:jsr250-api:$javaxAnnotations_version",
-      javaxInject:                "javax.inject:javax.inject:$javaxInject_version",
-      retrofit:                   "com.squareup.retrofit2:retrofit:$retrofit_version",
-      retrofitMoshiConverter:     "com.squareup.retrofit2:converter-moshi:$retrofit_version",
-      retrofitRxJavaAdapter:      "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
-      okhttpLoggingInterceptor:   "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_interceptor_version",
-      epoxyCompiler:              "com.airbnb.android:epoxy-processor:$epoxy_version",
-      epoxy:                      "com.airbnb.android:epoxy:$epoxy_version",
-      mvrx:                       "com.airbnb.android:mvrx:$mvrx_verison",
-      rxJava2:                    "io.reactivex.rxjava2:rxjava:$rxJava2_version",
-      rxAndroid:                  "io.reactivex.rxjava2:rxandroid:$rxAndroid_version",
-      rxKotlin:                   "io.reactivex.rxjava2:rxkotlin:$rxKotlin_version"
-  ]
+    //Development
+    leakCanaryVersion = '1.5'
 
-  unitTesting = [
-      kotlin:             "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
-      kotlinTest:         "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
-      robolectric:        "org.robolectric:robolectric:$robolectric_version",
-      junit:              "junit:junit:$junit_version",
-      mockito:            "com.nhaarman:mockito-kotlin:$mockito_version",
-      kluent:             "org.amshove.kluent:kluent:$kluent_version",
-  ]
+    mainApplication = [
+            kotlin                  : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            kotlinCoroutines        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version",
+            kotlinCoroutinesAndroid : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version",
+            coreKtx                 : "androidx.core:core-ktx:$coreKtx_version",
+            appCompat               : "androidx.appcompat:appcompat:$appCompat_version",
+            cardView                : "androidx.cardview:cardview:$appCompat_version",
+            recyclerView            : "androidx.recyclerview:recyclerview:$appCompat_version",
+            constraintLayout        : "androidx.constraintlayout:constraintlayout:$constraintLayout_version",
+            androidAnnotations      : "androidx.annotation:annotation:$appCompat_version",
+            archComponents          : "androidx.lifecycle:lifecycle-extensions:$archComponents_version",
+            archComponentsCompiler  : "androidx.lifecycle:lifecycle-compiler:$archComponents_version",
+            navigationFragment      : "android.arch.navigation:navigation-fragment-ktx:$nav_version",
+            navigationUI            : "android.arch.navigation:navigation-ui-ktx:$nav_version",
+            material                : "com.google.android.material:material:$material_version",
+            glide                   : "com.github.bumptech.glide:glide:$glide_version",
+            glideCompiler           : "com.github.bumptech.glide:compiler:$glide_version",
+            daggerCompiler          : "com.google.dagger:dagger-compiler:$dagger_version",
+            dagger                  : "com.google.dagger:dagger:$dagger_version",
+            daggerAndroid           : "com.google.dagger:dagger-android-support:$dagger_version",
+            daggerAndroidCompiler   : "com.google.dagger:dagger-android-processor:$dagger_version",
+            assistedInjectCompiler  : "com.squareup.inject:assisted-inject-processor-dagger2:$assisted_inject_version",
+            assistedInject          : "com.squareup.inject:assisted-inject-annotations-dagger2:$assisted_inject_version",
+            javaxAnnotation         : "javax.annotation:jsr250-api:$javaxAnnotations_version",
+            javaxInject             : "javax.inject:javax.inject:$javaxInject_version",
+            retrofit                : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            retrofitMoshiConverter  : "com.squareup.retrofit2:converter-moshi:$retrofit_version",
+            retrofitRxJavaAdapter   : "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
+            okhttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_interceptor_version",
+            epoxyCompiler           : "com.airbnb.android:epoxy-processor:$epoxy_version",
+            epoxy                   : "com.airbnb.android:epoxy:$epoxy_version",
+            mvrx                    : "com.airbnb.android:mvrx:$mvrx_verison",
+            mvrxTesting             : "com.airbnb.android:mvrx-testing:$mvrx_verison",
+            rxJava2                 : "io.reactivex.rxjava2:rxjava:$rxJava2_version",
+            rxAndroid               : "io.reactivex.rxjava2:rxandroid:$rxAndroid_version",
+            rxKotlin                : "io.reactivex.rxjava2:rxkotlin:$rxKotlin_version"
+    ]
 
-  acceptanceTesting = [
-      testRunner:         "androidx.test:runner:$runner_version",/**/
-      testRules:          "androidx.test:rules:$runner_version",
-      espressoCore:       "androidx.test.espresso:espresso-core:$espresso_version",
-      espressoIntents:    "androidx.test.espresso:espresso-intents:$espresso_version",
-      androidAnnotations: "androidx.annotation:annotation:$appCompat_version",
-  ]
+    unitTesting = [
+            kotlin      : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            kotlinTest  : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+            robolectric : "org.robolectric:robolectric:$robolectric_version",
+            junit       : "junit:junit:$junit_version",
+            mockito     : "com.nhaarman:mockito-kotlin:$mockito_version",
+            kluent      : "org.amshove.kluent:kluent:$kluent_version",
+            androidxTest: "androidx.fragment:fragment-testing:$androidxTest_version",
 
-  development = [
-      leakCanary:         "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
-      leakCanaryNoop:     "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}",
-  ]
+    ]
+
+    uiTesting = [
+            kaspresso: "com.kaspersky.android-components:kaspresso:$kaspresso_version",
+    ]
+
+    acceptanceTesting = [
+            testRunner        : "androidx.test:runner:$runner_version",/**/
+            testRules         : "androidx.test:rules:$runner_version",
+            espressoCore      : "androidx.test.espresso:espresso-core:$espresso_version",
+            espressoIntents   : "androidx.test.espresso:espresso-intents:$espresso_version",
+            androidAnnotations: "androidx.annotation:annotation:$appCompat_version",
+    ]
+
+    development = [
+            leakCanary    : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+            leakCanaryNoop: "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}",
+    ]
 }

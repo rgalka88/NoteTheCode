@@ -14,7 +14,7 @@ android {
         targetSdkVersion config["target_sdk"]
         versionCode config["version_code"]
         versionName config["version_name"]
-        testInstrumentationRunner config["test_runner"]
+        testInstrumentationRunner "com.rgalka88.notethecode.MyCustomTestRunner"
     }
 
     buildTypes {
@@ -28,6 +28,10 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -35,6 +39,7 @@ dependencies {
     def unitTestDependencies = rootProject.ext.unitTesting
     def acceptanceTestDependencies = rootProject.ext.acceptanceTesting
     def developmentDependencies = rootProject.ext.development
+    def uiTestDependencies = rootProject.ext.uiTesting
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -45,7 +50,7 @@ dependencies {
     kapt applicationDependencies.assistedInjectCompiler
     kapt applicationDependencies.epoxyCompiler
     kapt applicationDependencies.glideCompiler
-    compileOnly applicationDependencies.assistedInject
+    implementation applicationDependencies.assistedInject
     compileOnly applicationDependencies.javaxAnnotation
     compileOnly applicationDependencies.javaxInject
 
@@ -70,25 +75,48 @@ dependencies {
     implementation applicationDependencies.retrofitRxJavaAdapter
     implementation applicationDependencies.okhttpLoggingInterceptor
     implementation applicationDependencies.mvrx
+    implementation applicationDependencies.mvrxTesting
     implementation applicationDependencies.epoxy
     implementation applicationDependencies.rxJava2
     implementation applicationDependencies.rxAndroid
     implementation applicationDependencies.rxKotlin
 
-    //Unit/Integration tests dependencies
-    testImplementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.61"
-    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:1.3.61"
-    testImplementation unitTestDependencies.robolectric
-    testImplementation unitTestDependencies.junit
-    testImplementation unitTestDependencies.mockito
-    testImplementation unitTestDependencies.kluent
+//    //Unit/Integration tests dependencies
+//    testImplementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.61"
+//    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:1.3.61"
+//    testImplementation unitTestDependencies.robolectric
+//    testImplementation unitTestDependencies.junit
+//    testImplementation unitTestDependencies.mockito
+//    testImplementation unitTestDependencies.kluent
+//    testImplementation("androidx.test:core:1.2.1-alpha02")
+//    testImplementation("androidx.test:monitor:1.2.0")
+//    testImplementation("androidx.test.ext:junit:1.1.2-alpha02")
+//    testImplementation("androidx.test:runner:1.3.0-alpha02")
+//    testImplementation("androidx.test:rules:1.3.0-alpha02")
+//    debugImplementation("androidx.fragment:fragment-testing:1.2.1") {
+//        exclude group: "androidx.test"
+//    }
+//
+//    //Acceptance tests dependencies
+//    androidTestImplementation acceptanceTestDependencies.testRunner
+//    androidTestImplementation acceptanceTestDependencies.testRules
+//    androidTestImplementation acceptanceTestDependencies.espressoCore
+//    androidTestImplementation acceptanceTestDependencies.espressoIntents
+//    androidTestImplementation acceptanceTestDependencies.androidAnnotations
+//    androidTestImplementation uiTestDependencies.kaspresso
 
-    //Acceptance tests dependencies
-    androidTestImplementation acceptanceTestDependencies.testRunner
-    androidTestImplementation acceptanceTestDependencies.testRules
-    androidTestImplementation acceptanceTestDependencies.espressoCore
-    androidTestImplementation acceptanceTestDependencies.espressoIntents
-    androidTestImplementation acceptanceTestDependencies.androidAnnotations
+    testImplementation "junit:junit:4.13"
+    androidTestImplementation "androidx.test:runner:1.2.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
+    androidTestImplementation 'com.agoda.kakao:kakao:2.3.0'
+    androidTestImplementation ('com.kaspersky.android-components:kaspresso:1.1.0'){
+        exclude group: 'com.agoda.kakao', module: 'kakao'
+    }
+    debugImplementation 'androidx.fragment:fragment-testing:1.2.3'
+    testImplementation "io.mockk:mockk:1.9.3"
+    androidTestImplementation "io.mockk:mockk-android:1.9.3"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:2.26"
+
 
     //Development dependencies
     debugImplementation developmentDependencies.leakCanary
