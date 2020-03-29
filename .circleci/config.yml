@@ -1,31 +1,49 @@
 version: 2
-jobs:
-  build:
-    working_directory: ~/code
-    docker:
-      - image: circleci/android:api-25-alpha
-    environment:
-      JVM_OPTS: -Xmx3200m
-    steps:
-      - checkout
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-            - run:
-               name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
-               command: sudo chmod +x ./gradlew
-      - run:
-          name: Download Dependencies
-          command: ./gradlew androidDependencies
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: Run Tests
-          command: ./gradlew lint test
-      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: app/build/reports
-          destination: reports
-      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: app/build/test-results
-      # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+
+  references:
+    ## Cache
+    cache_key: &cache_key
+      key: jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+    restore_cache: &restore_cache
+      restore_cache:
+        <<: *cache_key
+    save_cache: &save_cache
+      save_cache:
+        <<: *cache_key
+        paths:
+          - ~/.gradle
+
+    ## Docker image configurations
+    android_config: &android_config
+      working_directory: ~/workspace
+      docker:
+        - image: circleci/android:api-28
+      environment:
+        JVM_OPTS: -Xmx4G
+
+  jobs:
+    ## Run unit tests
+    test_unit:
+      <<: *android_config
+      steps:
+        - checkout
+        - *restore_cache
+        - run:
+            name: Download dependencies
+            command: ./gradlew androidDependencies
+        - *save_cache
+        - run:
+            name: Run unit tests
+            command: ./gradlew -PciBuild=true test
+        - store_artifacts:
+            path: app/build/reports
+            destination: /reports/
+        - store_test_results:
+            path: app/build/test-results
+            destination: /test-results/
+
+  workflows:
+    version: 2
+    workflow:
+      jobs:
+        - test_unit
